@@ -115,7 +115,7 @@ public class WillOWispEntity extends ThrownLightOrbEntity {
     public ActionResult interactAt(PlayerEntity playerEntity, Vec3d vec3d, Hand hand) {
         this.invalidate();
         playerEntity.inventory.insertStack(new ItemStack(IlluminationsItems.WILL_O_WISP));
-        return super.interactAt(playerEntity, vec3d, hand);
+        return ActionResult.SUCCESS;
     }
 
 }
