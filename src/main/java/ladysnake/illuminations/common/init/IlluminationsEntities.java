@@ -6,6 +6,7 @@ import ladysnake.illuminations.common.entities.WillOWispEntity;
 import net.fabricmc.fabric.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.EntityCategory;
 import net.minecraft.entity.EntityType;
+import net.minecraft.item.Item;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
 
