@@ -19,6 +19,7 @@ public class IlluminationsEntities {
     public static EntityType<FireflyEntity> FIREFLY;
     public static EntityType<LightningBugEntity> LIGHTNING_BUG;
     public static EntityType<WillOWispEntity> WILL_O_WISP;
+    public static EntityType<WillOWispEntity> FIRE_SPIRIT;
 
     public static void init() {
         // Firefly + firefly spawns
@@ -37,12 +38,14 @@ public class IlluminationsEntities {
             }
         }
         // WoW + thrown WoW + WoW spawns
-        WILL_O_WISP = Registry.register(Registry.ENTITY_TYPE, "illuminations:will_o_wisp", FabricEntityTypeBuilder.create(WillOWispEntity.class, WillOWispEntity::new).trackable(64, 1, true).build());
+        WILL_O_WISP = Registry.register(Registry.ENTITY_TYPE, "illuminations:will_o_wisp", FabricEntityTypeBuilder.create(WillOWispEntity.class, world -> new WillOWispEntity(WILL_O_WISP, world)).trackable(64, 1, true).build());
         for (Biome biome : Registry.BIOME) {
             if (biome.getCategory() == Biome.Category.SWAMP) {
                 biome.getEntitySpawnList(EntityCategory.CREATURE).add(new Biome.SpawnEntry(WILL_O_WISP, 20, 1, 1));
             }
         }
+        // Spirit bombs
+        FIRE_SPIRIT = Registry.register(Registry.ENTITY_TYPE, "illuminations:fire_spirit", FabricEntityTypeBuilder.create(WillOWispEntity.class, world -> new WillOWispEntity(FIRE_SPIRIT, world)).trackable(64, 1, true).build());
     }
 
 }

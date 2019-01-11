@@ -3,6 +3,7 @@ package ladysnake.illuminations.client.renders.entities;
 import com.mojang.blaze3d.platform.GLX;
 import com.mojang.blaze3d.platform.GlStateManager;
 import ladysnake.illuminations.common.Illuminations;
+import ladysnake.illuminations.common.init.IlluminationsEntities;
 import net.minecraft.client.render.BufferBuilder;
 import net.minecraft.client.render.Tessellator;
 import net.minecraft.client.render.VertexFormats;
@@ -67,7 +68,12 @@ public class WillOWispRender<T extends Entity> extends EntityRenderer<T> {
 
     @Override
     protected Identifier getTexture( T entity) {
-        return new Identifier(Illuminations.MOD_ID, "textures/entity/will_o_wisp.png");
+        String id = "";
+
+        if (entity.getType() == IlluminationsEntities.WILL_O_WISP) id = "will_o_wisp";
+        else if (entity.getType() == IlluminationsEntities.FIRE_SPIRIT) id = "fire_spirit";
+
+        return new Identifier(Illuminations.MOD_ID, "textures/entity/"+id+".png");
     }
 
 }

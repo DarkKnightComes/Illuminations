@@ -9,7 +9,6 @@ import net.minecraft.entity.SpawnType;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.HitResult;
@@ -24,12 +23,12 @@ public class WillOWispEntity extends ThrownLightOrbEntity {
         this(IlluminationsEntities.WILL_O_WISP, world);
     }
 
-    public WillOWispEntity(EntityType entityType, World worldIn) {
-        super(entityType, worldIn);
+    public WillOWispEntity(EntityType entityType, World world) {
+        super(entityType, world);
     }
 
-    public WillOWispEntity(World world, LivingEntity livingEntity) {
-        super(IlluminationsEntities.WILL_O_WISP, livingEntity, world);
+    public WillOWispEntity(EntityType entityType, World world, LivingEntity livingEntity) {
+        super(entityType, livingEntity, world);
     }
 
     // Behaviour
