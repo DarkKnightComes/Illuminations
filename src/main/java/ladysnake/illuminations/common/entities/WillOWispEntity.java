@@ -107,6 +107,11 @@ public class WillOWispEntity extends ThrownLightOrbEntity {
         }
 
         if (!this.world.isClient) {
+            if (this.getType() == IlluminationsEntities.FIRE_SPIRIT) {
+                this.world.createExplosion(this, DamageSource.MAGIC, this.x, this.y, this.z, 2f, true, true);
+                this.invalidate();
+            }
+
             this.beingThrown = false;
         }
     }
