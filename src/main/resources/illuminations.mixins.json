@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "package": "ladysnake.illuminations.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "LanternLivingEntityMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

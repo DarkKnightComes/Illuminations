@@ -1,7 +1,9 @@
 {
+  "schemaVersion": 1,
   "id": "illuminations",
+  "version": "${version}",
+
   "name": "Illuminations",
-  "icon": "assets/illuminations/illuminations.png",
   "description": "Fireflies and other light orbs to make your world more enjoyable in darkness.",
   "authors": [
     "doctor4t"
@@ -9,13 +11,29 @@
   "contributors": [
     "Pyrofab"
   ],
-  "version": "${version}",
-  "side": "universal",
-  "initializers": [
-    "ladysnake.illuminations.common.Illuminations",
-    "ladysnake.illuminations.client.IlluminationsClient"
+  "contact": {
+    "homepage": "https://ladysnake.glitch.me/",
+    "sources": "https://github.com/ladysnake/illuminations"
+  },
+
+  "license": "ARR",
+  "icon": "assets/illuminations/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "ladysnake.illuminations.common.Illuminations"
+    ],
+    "client": [
+      "ladysnake.illuminations.client.IlluminationsClient"
+    ]
+  },
+  "mixins": [
+    "illuminations.mixins.json"
   ],
+
   "requires": {
+    "fabricloader": ">=0.4.0",
     "fabric": "*"
   }
 }

@@ -2,6 +2,7 @@ package ladysnake.illuminations.common.init;
 
 import ladysnake.illuminations.common.Illuminations;
 import ladysnake.illuminations.common.blocks.FireflyNestBlock;
+import ladysnake.illuminations.common.blocks.GlowingAirBlock;
 import ladysnake.illuminations.common.blocks.LightningBugNestBlock;
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.Block;
@@ -19,6 +20,7 @@ public class IlluminationsBlocks {
     public static Block LIGHTNING_BUG_NEST;
     public static Block FIREFLY_IN_A_BOTTLE;
     public static Block GLOWWORM;
+    public static Block GLOWING_AIR;
 
 
     public static void init() {
@@ -26,6 +28,7 @@ public class IlluminationsBlocks {
         LIGHTNING_BUG_NEST = registerBlock(new LightningBugNestBlock(Block.Settings.of(Material.WOOD).strength(0.5F, 1.5F)), "lightning_bug_nest", false);
         FIREFLY_IN_A_BOTTLE = registerBlock(new LanternBlock(FabricBlockSettings.of(Material.GLASS).strength(0.3F, 0.3F).sounds(BlockSoundGroup.GLASS).lightLevel(10).build()), "firefly_in_a_bottle");
 //        GLOWWORM = registerBlock(new GlowwormBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.SLIME).lightLevel(5).build()), "glowworm");
+        GLOWING_AIR = registerBlock(new GlowingAirBlock(FabricBlockSettings.of(Material.AIR).noCollision().lightLevel(15).build()), "air");
     }
 
     private static Block registerBlock(Block block, String name) {
