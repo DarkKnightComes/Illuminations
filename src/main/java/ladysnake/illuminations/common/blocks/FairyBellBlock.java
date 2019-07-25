@@ -2,6 +2,7 @@ package ladysnake.illuminations.common.blocks;
 
 import ladysnake.illuminations.common.entities.FairyBellBlockEntity;
 import ladysnake.illuminations.common.entities.FairyEntity;
+import ladysnake.illuminations.common.init.IlluminationsBlocks;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.EntityContext;
@@ -18,6 +19,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
+import java.util.Random;
 
 public class FairyBellBlock extends FlowerBlock implements BlockEntityProvider {
     public static final EnumProperty<State> STATE = EnumProperty.of("state", State.class);
@@ -67,6 +69,25 @@ public class FairyBellBlock extends FlowerBlock implements BlockEntityProvider {
             Vec3d offset = blockState.getOffsetPos(world, blockPos);
             FairyEntity spawnedFairy = new FairyEntity(world, blockPos.getX()+offset.x+.5, blockPos.getY()+offset.y+.5, blockPos.getZ()+offset.z+.5, blockEntity.getFairyColor());
             world.spawnEntity(spawnedFairy);
+        }
+    }
+
+    @Override
+    public boolean hasRandomTicks(BlockState blockState_1) {
+        return true;
+    }
+
+    @Override
+    public void onRandomTick(BlockState blockState, World world, BlockPos blockPos, Random random) {
+        if (world.isDaylight() && !world.isRaining()) {
+            // if closed, release a fairy
+            if (blockState.get(STATE) == State.CLOSED) {
+                FairyBellBlockEntity blockEntity = (FairyBellBlockEntity) world.getBlockEntity(blockPos);
+                Vec3d offset = blockState.getOffsetPos(world, blockPos);
+                FairyEntity spawnedFairy = new FairyEntity(world, blockPos.getX() + offset.x + .5, blockPos.getY() + offset.y + .5, blockPos.getZ() + offset.z + .5, blockEntity.getFairyColor());
+                world.spawnEntity(spawnedFairy);
+                world.setBlockState(blockPos, IlluminationsBlocks.FAIRY_BELL.getDefaultState().with(FairyBellBlock.STATE, FairyBellBlock.State.OPEN));
+            }
         }
     }
 
